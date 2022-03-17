@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 void fizz_buzz(void);
 /**
  * main - entry point for function
