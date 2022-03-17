@@ -1,5 +1,4 @@
 #include "main.h"
-#include "holberton.h"
 /**
  * more_numbers - print 0..14 x 10
  *
