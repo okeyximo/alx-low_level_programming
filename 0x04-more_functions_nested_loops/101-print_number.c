@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 void print_unsigned_int(unsigned int n);
 /**
  * print_number - print number n with putchar
