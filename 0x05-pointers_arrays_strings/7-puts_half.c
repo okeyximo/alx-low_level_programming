@@ -1,23 +1,27 @@
-#include "main.c"
+#include "main.h"
+
 /**
- * puts_half - print second half of str
- *
- * @str: string to cut in half & print
- *
- * Return: always void
+ * puts_half - prints half of a string.
+ * @str: input string.
+ * Return: no return.
  */
 void puts_half(char *str)
 {
-	int length, charsToPrint = 0;
+	int count = 0, i;
 
-	while (*(str + length) != '\0')
-		length++;
-	if (!(length % 2)) /* if uneven number */
-		charsToPrint = (length - 1) / 2;
+	while (count >= 0)
+	{
+		if (str[count] == '\0')
+			break;
+		count++;
+	}
+
+	if (count % 2 == 1)
+		i = count / 2;
 	else
-		charsToPrint = length / 2;
-	charsToPrint++;
-	while (charsToPrint < length)
-		_putchar(*(str + charsToPrint++));
+		i = (count - 1) / 2;
+
+	for (i++; i < count; i++)
+		_putchar(str[i]);
 	_putchar('\n');
 }
