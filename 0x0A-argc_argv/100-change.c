@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 /**
- * main - prints the minimum number of coins to make change for an amount of money
+ * main - prints the min num of coins to make change
  * @argc: number of arguments
  * @argv: array of arguments
  *
@@ -23,7 +23,8 @@ int main(int argc, char **argv)
 	}
 	n = atoi(argv[1]);
 
-	while (n > 0){
+	while (n > 0)
+	{
 		if (n >= 25)
 		{
 			n -= 25;
@@ -44,7 +45,7 @@ int main(int argc, char **argv)
 		{
 			n -= 1;
 		}
-		count ++;
+		count++;
 	}
 	printf("%d\n", count);
 	return (0);
