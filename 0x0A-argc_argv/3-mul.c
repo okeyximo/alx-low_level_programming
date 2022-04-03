@@ -1,8 +1,8 @@
 #include "main.h"
 #include <stdio.h>
-
+#include<stdlib.h>
 /**
- * main - prints the name of the program
+ * main - prints the results of the multiplication of two numbers
  * @argc: number of arguments
  * @argv: array of arguments
  *
@@ -11,6 +11,16 @@
 
 int main(int argc __attribute__((unused)), char **argv)
 {
-	printf("%s\n", *argv);
-	return (0);
+
+	if (argc != 3)
+	{
+		printf("Error\n");
+		return (1);
+	}
+	else
+	{
+		printf("%d\n", atoi(argv[1]) * atoi(argv[2]));
+		return (0);
+	}
+
 }
