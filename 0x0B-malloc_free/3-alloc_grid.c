@@ -2,28 +2,43 @@
 #include <stdlib.h>
 
 /**
- * create_array - creates an array of chars, and initializes it with
- * a specific char.
- * @size: argument for the size of the array
- * @c: argument for the char
+ * alloc_grid - Returns a pointer to a 2D array of integers
+ * @width: width of grid
+ * @height: height of grid
  * Return: NULL or a pointer to the arrays
  */
 
-char *create_array(unsigned int size, char c)
+int **alloc_grid(int width, int height)
 {
-	char *my_array;
-	unsigned int i = 0;
+	int **arr;
+	int  i = 0, j = 0;
 
-	if (size == 0)
+	if (width <= 0 || height <= 0)
 		return (NULL);
-	my_array = (char *)malloc(sizeof(char) * size);
-	if (my_array == NULL)
+	arr = (int **)malloc(sizeof(int *) * height);
+	if (arr == NULL)
 		return (NULL);
-	while (i < size)
+
+	for (i = 0; i < height; i++)
 	{
-		my_array[i] = c;
-		i++;
+		arr[i] = (int *)malloc(sizeof(int *) * width);
+		if (arr[i] == NULL)
+		{
+			free(arr);
+			{
+				for (j = 0; j < i; j++)
+					free(arr[j]);
+				return (NULL);
+			}
+
+		}
 	}
-	return (my_array);
-	free(my_array);
+	for (i = 0; i < height; i++)
+	{
+		for (j = 0; j < width; j++)
+		{
+			arr[i][j] = 0;
+		}
+	}
+	return (arr);
 }
