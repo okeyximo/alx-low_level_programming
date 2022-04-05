@@ -10,20 +10,15 @@
 
 char *str_concat(char *s1, char *s2)
 {
-	int i = 0;
-	int j = 0;
-	int len1 = 0;
-	int len2 = 0;
+	unsigned int i = 0, j = 0, len1 = 0, len2 = 0;
 	char *pconcat;
 
-	while (s1[len1])
+	while (s1 && s1[len1])
 		len1++;
-	while (s2[len2])
+	while (s2 && s2[len2])
 		len2++;
 
-	pconcat = (char *)malloc((sizeof(char) * (len1 + len2 + 1)));
-	if (s1 == NULL && s2 == NULL)
-		pconcat = '\0';
+	pconcat = malloc(sizeof(char) * (len1 + len2 + 1));
 	if (pconcat == NULL)
 		return (NULL);
 	if (s1)
@@ -47,7 +42,6 @@ char *str_concat(char *s1, char *s2)
 	}
 	pconcat[i] = '\0';
 	return (pconcat);
-	free(pconcat);
 
 }
 
