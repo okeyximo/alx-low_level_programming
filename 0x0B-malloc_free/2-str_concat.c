@@ -2,28 +2,48 @@
 #include <stdlib.h>
 
 /**
- * create_array - creates an array of chars, and initializes it with
- * a specific char.
- * @size: argument for the size of the array
- * @c: argument for the char
- * Return: NULL or a pointer to the arrays
+ * str_concat - concats two strings
+ * @s1: argument for 1st str
+ * @s2: argument for 2nd str
+ * Return: NULL or a pointer to concat str or null terminator
  */
 
-char *create_array(unsigned int size, char c)
+char *str_concat(char *s1, char *s2)
 {
-	char *my_array;
-	unsigned int i = 0;
+	int i = 0;
+	int j = 0;
+	int len1 = 0;
+	int len2 = 0;
+	char *pconcat;
 
-	if (size == 0)
+	if (s1 == NULL && s2 == NULL)
+		return ('\0');
+	while (s1[len1])
+		len1++;
+	while (s2[len2])
+		len2++;
+
+	pconcat = (char *)malloc((sizeof(char) * (len1 + len2 + 1)));
+
+	if (pconcat == NULL)
 		return (NULL);
-	my_array = (char *)malloc(sizeof(char) * size);
-	if (my_array == NULL)
-		return (NULL);
-	while (i < size)
+	while (i < len1)
 	{
-		my_array[i] = c;
+		pconcat[i] = s1[i];
 		i++;
 	}
-	return (my_array);
-	free(my_array);
+	while ((j + len1) < (len1 + len2))
+	{
+		pconcat[(j + len1)] = s2[j];
+		j++;
+	}
+	return (pconcat);
+	free(pconcat);
+
 }
+
+
+
+
+
+
