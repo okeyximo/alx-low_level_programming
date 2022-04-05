@@ -1,29 +1,46 @@
-#include "main.h"
+
 #include <stdlib.h>
+#include "main.h"
 
 /**
- * create_array - creates an array of chars, and initializes it with
- * a specific char.
- * @size: argument for the size of the array
- * @c: argument for the char
- * Return: NULL or a pointer to the arrays
+ * *argstostr - concatenates all the arguments of the program
+ * @ac: number of arguments
+ * @av: array of arguments
+ *
+ * Return: Pointer to the new string (Success), NULL (Error)
  */
-
-char *create_array(unsigned int size, char c)
+char *argstostr(int ac, char **av)
 {
-	char *my_array;
-	unsigned int i = 0;
+	int i, j, k, len;
+	char *str;
 
-	if (size == 0)
+	if (ac == 0 || av == NULL)
 		return (NULL);
-	my_array = (char *)malloc(sizeof(char) * size);
-	if (my_array == NULL)
-		return (NULL);
-	while (i < size)
+
+	for (i = 0; i < ac; i++)
 	{
-		my_array[i] = c;
-		i++;
+		for (j = 0; av[i][j] != '\0'; j++)
+			len++;
+		len++;
 	}
-	return (my_array);
-	free(my_array);
+
+	str = malloc(sizeof(char) * (len + 1));
+
+	if (str == NULL)
+		return (NULL);
+
+	k = 0;
+
+	for (i = 0; i < ac; i++)
+	{
+		for (j = 0; av[i][j] != '\0'; j++)
+		{
+			str[k] = av[i][j];
+			k++;
+		}
+		str[k] = '\n';
+		k++;
+	}
+
+	return (str);
 }
