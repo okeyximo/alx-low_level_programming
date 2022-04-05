@@ -9,15 +9,16 @@
  * Return: NULL or a pointer to the arrays
  */
 
-char *create_array(unsigned int size, char c)
+char *_strdup(char *str)
 {
 	char *pstr;
 	int i = 0, len = 0;
 
-	len = sizeof(str) / sizeof(str[0]);
+	while (str[len])
+		len++;
 	if (str == NULL)
 		return (NULL);
-	pstr = (char *)malloc(len * (sizeof(char)));
+	pstr = (char *)malloc((sizeof(char)) * (len + 1));
 	if (pstr == NULL)
 		return (NULL);
 	while (i <= len)
