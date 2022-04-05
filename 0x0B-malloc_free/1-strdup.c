@@ -2,11 +2,10 @@
 #include <stdlib.h>
 
 /**
- * create_array - creates an array of chars, and initializes it with
- * a specific char.
- * @size: argument for the size of the array
- * @c: argument for the char
- * Return: NULL or a pointer to the arrays
+ * _strdup - pointer to a newly allocated space in memory,
+ * which contains a copy of the string given as a parameter.
+ * @str: argument for str
+ * Return: NULL or a pointer to the str
  */
 
 char *_strdup(char *str)
@@ -21,7 +20,7 @@ char *_strdup(char *str)
 	pstr = (char *)malloc((sizeof(char)) * (len + 1));
 	if (pstr == NULL)
 		return (NULL);
-	while (i <= len)
+	while (i < len)
 	{
 		*(pstr + i) = str[i];
 		i++;
