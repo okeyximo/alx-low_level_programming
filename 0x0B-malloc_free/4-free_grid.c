@@ -1,29 +1,21 @@
-#include "main.h"
 #include <stdlib.h>
+#include "main.h"
 
 /**
- * create_array - creates an array of chars, and initializes it with
- * a specific char.
- * @size: argument for the size of the array
- * @c: argument for the char
- * Return: NULL or a pointer to the arrays
+ * free_grid - frees the memory allocate for the grid
+ * created by alloc_grid()
+ * @grid: grid to free
+ * @height: height of the grid
  */
-
-char *create_array(unsigned int size, char c)
+void free_grid(int **grid, int height)
 {
-	char *my_array;
-	unsigned int i = 0;
+	int i;
 
-	if (size == 0)
-		return (NULL);
-	my_array = (char *)malloc(sizeof(char) * size);
-	if (my_array == NULL)
-		return (NULL);
-	while (i < size)
-	{
-		my_array[i] = c;
-		i++;
-	}
-	return (my_array);
-	free(my_array);
+	if (grid == NULL || height == 0)
+		return;
+
+	for (i = 0; i < height; i++)
+		free(grid[i]);
+
+	free(grid);
 }
