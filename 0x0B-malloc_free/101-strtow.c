@@ -1,29 +1,77 @@
-#include "main.h"
 #include <stdlib.h>
+#include "main.h"
 
 /**
- * create_array - creates an array of chars, and initializes it with
- * a specific char.
- * @size: argument for the size of the array
- * @c: argument for the char
- * Return: NULL or a pointer to the arrays
+ * count_word - helper function to count the number of words in a string
+ * @s: string to evaluate
+ *
+ * Return: number of words
  */
-
-char *create_array(unsigned int size, char c)
+int count_word(char *s)
 {
-	char *my_array;
-	unsigned int i = 0;
+	int flag, c, w;
 
-	if (size == 0)
-		return (NULL);
-	my_array = (char *)malloc(sizeof(char) * size);
-	if (my_array == NULL)
-		return (NULL);
-	while (i < size)
+	flag = 0;
+	w = 0;
+
+	for (c = 0; s[c] != '\0'; c++)
 	{
-		my_array[i] = c;
-		i++;
+		if (s[c] == ' ')
+			flag = 0;
+		else if (flag == 0)
+		{
+			flag = 1;
+			w++;
+		}
 	}
-	return (my_array);
-	free(my_array);
+
+	return (w);
+}
+/**
+ * **strtow - splits a string into words
+ * @str: string to split
+ *
+ * Return: pointer to an array of strings (Success)
+ * or NULL (Error)
+ */
+char **strtow(char *str)
+{
+	char **matrix, *tmp;
+	int i, k = 0, len = 0, words, c = 0, start, end;
+
+	while (*(str + len))
+		len++;
+	words = count_word(str);
+	if (words == 0)
+		return (NULL);
+
+	matrix = (char **) malloc(sizeof(char *) * (words + 1));
+	if (matrix == NULL)
+		return (NULL);
+
+	for (i = 0; i <= len; i++)
+	{
+		if (str[i] == ' ' || str[i] == '\0')
+		{
+			if (c)
+			{
+				end = i;
+				tmp = (char *) malloc(sizeof(char) * (c + 1));
+				if (tmp == NULL)
+					return (NULL);
+				while (start < end)
+					*tmp++ = str[start++];
+				*tmp = '\0';
+				matrix[k] = tmp - c;
+				k++;
+				c = 0;
+			}
+		}
+		else if (c++ == 0)
+			start = i;
+	}
+
+	matrix[k] = NULL;
+
+	return (matrix);
 }
