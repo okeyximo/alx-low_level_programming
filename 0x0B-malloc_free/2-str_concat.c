@@ -36,13 +36,15 @@ char *str_concat(char *s1, char *s2)
 
 	if (s2)
 	{
-		while ((j + len1) < (len1 + len2))
+		while (i < (len1 + len2))
 		{
-			pconcat[(j + len1)] = s2[j];
+			pconcat[i] = s2[j];
+			i++;
 			j++;
+
 		}
 	}
-	pconcat[i + j] = '\0';
+	pconcat[i] = '\0';
 	return (pconcat);
 	free(pconcat);
 
