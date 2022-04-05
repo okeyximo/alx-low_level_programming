@@ -16,7 +16,7 @@ char *str_concat(char *s1, char *s2)
 	int len2 = 0;
 	char *pconcat;
 
-	if (s1 == NULL && s2 == NULL)
+	if ((s1 == NULL && s2 == NULL)
 		return ('\0');
 	while (s1[len1])
 		len1++;
@@ -27,16 +27,24 @@ char *str_concat(char *s1, char *s2)
 
 	if (pconcat == NULL)
 		return (NULL);
-	while (i < len1)
+	if (s1)
 	{
-		pconcat[i] = s1[i];
-		i++;
+		while (i < len1)
+		{
+			pconcat[i] = s1[i];
+			i++;
+		}
 	}
-	while ((j + len1) < (len1 + len2))
+
+	if (s2)
 	{
-		pconcat[(j + len1)] = s2[j];
-		j++;
+		while ((j + len1) < (len1 + len2))
+		{
+			pconcat[(j + len1)] = s2[j];
+			j++;
+		}
 	}
+	pconcat = '\0';
 	return (pconcat);
 	free(pconcat);
 
