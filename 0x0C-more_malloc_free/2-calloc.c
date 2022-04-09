@@ -6,7 +6,7 @@
  * _calloc - allocates memory for an array of nmemb elements of size
  * bytes each and returns a pointer to the allocated memory
  *
- * @nmeb: the array
+ * @nmemb: the array
  * @size: size of bytes to be allocated
  * Return: NULL or pointer to the memory
  */
