@@ -2,7 +2,7 @@
 
 /**
  * print_numbers - prints numbers followed by a new line
- * @seperator: the string to be printed between numbers
+ * @separator: ponter to the string to be printed between numbers
  * @n: the number of intergers passed to the function
  */
 void print_numbers(const char *separator, const unsigned int n, ...)
