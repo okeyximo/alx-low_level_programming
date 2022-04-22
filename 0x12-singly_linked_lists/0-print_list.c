@@ -3,7 +3,6 @@
 /**
  * print_list - prints all the elements of a list_t list
  * @h: pointer to the list_t to print
- * @n: number of nodes
  * Return: the number of nodes or (nil)
  */
 
