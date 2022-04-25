@@ -6,12 +6,12 @@
 
 
 /**
- * struct listint_s - singly list list 
+ * struct listint_s - singly list list
  * @n: integer
- * @next: points to the next node 
- * 
+ * @next: points to the next node
+ *
  * Description: signly linked list node structure
- * 
+ *
  */
 typedef struct listint_s
 {
